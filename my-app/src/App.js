@@ -10,8 +10,9 @@ import Settings from './components/Settin/Settin'
 import {BrowserRouter, Route} from 'react-router-dom'
 import Message from './components/Dialogs/Message/Message';
 
+
 const App = (props) => {
-  
+
   return (
     <BrowserRouter>
         <div className = 'app-wrapper'>
@@ -20,11 +21,12 @@ const App = (props) => {
             <div className = 'app-wrapper-content'>
                 <Route path='/profile' 
                   render={ () => <Profile 
-                    state={props.appState.profilePage}
-                    addPost={props.addPost}/>}/>
+                    profilePage={props.state.profilePage}
+                    addPost={props.addPost}
+                    updateNewPostText={props.updateNewPostText}/>}/>
                 <Route path='/dialogs' 
                   render={ () => <Dialogs 
-                    state={props.appState.dialogsPage} 
+                    state={props.state.dialogsPage} 
                     addMessages={props.addMessages}/>}/>                
                 <Route path='/users' render={ () => <Message/>}/>
                 <Route path='/news' render={ () => <News/>}/>

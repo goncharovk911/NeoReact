@@ -9,7 +9,9 @@ let state = {
             {id:4, message:"Can you hear me?", likesCount: 3, image:"https://img.cartoongoodies.com/wp-content/uploads/2019/11/Avatar-The-Last-Airbender-Aang-head.png"},
             {id:5, message:"If someone sees these messages give an answer", likesCount: 0, image:"https://img.cartoongoodies.com/wp-content/uploads/2019/11/Avatar-The-Last-Airbender-Aang-head.png"},
             {id:6, message:"Or at least like", likesCount: 1, image:"https://img.cartoongoodies.com/wp-content/uploads/2019/11/Avatar-The-Last-Airbender-Aang-head.png"}
-        ]
+        ],
+        newPostText: "Neo"
+       
     }
     ,
     dialogsPage:{
@@ -38,18 +40,22 @@ let state = {
    
 }
 
-export let addPost = (PostMessage) => {
+window.state = state;
+
+export let addPost = () => {
     
     let newPost ={
         id: 7,
-        message: PostMessage,
+        message: state.profilePage.newPostText,
         likesCount: 0,
         image:"https://img.cartoongoodies.com/wp-content/uploads/2019/11/Avatar-The-Last-Airbender-Aang-head.png"
     };
 
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = ' '
     renderEntireTree(state)
 }
+
 
 export let addMessages = (PropsMessage) => {
 
@@ -65,6 +71,13 @@ export let addMessages = (PropsMessage) => {
 
     state.dialogsPage.messages.push(newMessages)
     state.dialogsPage.dialogs.push(newDialods)
+    renderEntireTree(state)
+
+}
+
+export let updateNewPostText = (newText) => {
+    
+    state.profilePage.newPostText = newText
     renderEntireTree(state)
 
 }
